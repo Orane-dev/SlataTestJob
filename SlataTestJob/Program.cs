@@ -30,8 +30,9 @@ namespace SlataTestJob
 
             builder.Services.AddDbContext<ApplicationContext>(options =>
             {
-                options.UseSqlite(builder.Configuration.GetConnectionString(
-                    Environment.GetEnvironmentVariable("Connection_string")));
+                options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+
+                //Environment.GetEnvironmentVariable("Connection_string")
             });
             builder.Services.AddTransient<ICandidateDAL, CandidateDAL>();
             builder.Services.AddTransient<ICandidateBL, CandidateBL>();
@@ -40,10 +41,10 @@ namespace SlataTestJob
             builder.Services.AddTransient<ITestJobBL, TestJobBL>();
             builder.Services.AddTransient<ITestJobDAL, TestJobDAL>();
 
-            builder.WebHost.ConfigureKestrel(options =>
-            {
-                options.ListenAnyIP(80);
-            });
+            //builder.WebHost.ConfigureKestrel(options =>
+            //{
+            //    options.ListenAnyIP(80);
+            //});
 
             var app = builder.Build();
 

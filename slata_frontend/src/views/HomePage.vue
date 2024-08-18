@@ -28,7 +28,12 @@
                             </label>
                             <label>
                                 Department:
-                                <input v-model="newCandidate.department" type="text" required />
+                                <select v-model="newCandidate.department" required>
+                                    <option>HR</option>
+                                    <option>IT</option>
+                                    <option>Marketing</option>
+                                    <option>Assortment</option>
+                                </select>
                             </label>
                             <label>
                                 Interview Date:
@@ -214,7 +219,7 @@ export default {
             },
             searchResult: [],
             isHR: localStorage.getItem('department') === 'HR',
-	    apiUrl: 'http://localhost:5000',
+	    apiUrl: 'https://localhost:7098',
         };
     },
 

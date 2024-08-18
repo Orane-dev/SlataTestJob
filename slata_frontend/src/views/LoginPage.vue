@@ -33,8 +33,10 @@ export default {
     },
     methods: {
         login() {
-            if (this.username === '123' && this.password === '123') {
-                localStorage.setItem('authToken', 'dummy-token');
+            const envUsername = process.env.VUE_APP_USERNAME;
+            const envPassword = process.env.VUE_APP_PASSWORD;
+            if (this.username === envUsername && this.password === envPassword) {
+                localStorage.setItem('authToken', 'token');
                 localStorage.setItem('department', this.department);
                 this.$router.push('/');
             } else {
